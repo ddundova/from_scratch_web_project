@@ -1,0 +1,270 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #112c3b;
+  font-size: 16px;
+}
+
+header {
+  width: 100%;
+  margin: 0;
+  color: #fff;
+  background-image: url("../imgs/header3.jpg");
+  background-size: cover;
+  background-position: bottom;
+  position: relative;
+  height: 250px;
+  grid-area: gHeader;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.headlines {
+  font-size: 1.5em;
+  position: absolute;
+  transform: translateY(-50%);
+  top: 70%;
+  right: 2%;
+  text-align: end;
+  padding: 0px 5%;
+  background-color: #ffffff26;
+  border-top: solid 2px #fff;
+}
+
+h1, h3 {
+  margin: 0;
+}
+
+nav {
+  background-color: #fff;
+  grid-area: gNav;
+  margin-bottom: 20px;  
+}
+
+ul {
+  text-align: center;
+  font-size: 1.05em;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+li {
+  display: block;
+  padding: 16px;
+  position: relative;
+}
+
+nav a {
+  text-decoration: none;
+  padding: 16px 0;
+  color: #000;
+  font-family: "Outfit", serif;
+}
+
+nav li:after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 1px;
+  display: block;
+  transition: all 0.7s ease;
+}
+nav li:hover::after {
+  width: 90%;
+  /* width: 70%; */
+  height: 1.5px;
+  background-color: #004b70;
+}
+
+nav li:hover a {
+  color: #004b70;
+  font-weight: 600;
+}
+
+.container {
+  padding: 20px;
+  background-color: #508a9d;
+  border-radius: 40px;
+  margin: 16px 8px;
+  color: #001f33;
+  font-size: 1.15em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.recipe {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: 
+  "gLeftSide"
+  "gRightSide"
+  "gInstr";
+  grid-column-gap: 8px;
+}
+
+.left-side {
+  float: left;
+  grid-area: gLeftSide;
+}
+
+.right-side {
+  float: right;
+  grid-area: gRightSide;
+}
+
+.instructions {
+  grid-area: gInstr;
+  margin: 2% 0 0 5%;
+}
+
+.recipe img, aside img, .ads img {
+  width: 85%;
+  margin: 0 8%;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.ads img {
+  margin-top: 8%;
+}
+
+.recipe .author-name {
+  margin-top: 0;
+}
+
+.recipe h2 {
+  margin-bottom: 8px;
+}
+
+.main-container {
+  display: grid;
+  grid-column-gap: 8px;
+}
+
+main {
+  grid-area: gMain;
+}
+
+aside {
+  grid-area: gAside;
+  height: fit-content;
+  text-align: center;
+}
+
+.ads {
+  grid-area: gAds;
+  height: fit-content;
+  display: none;
+}
+
+footer {
+  grid-area: gFooter;
+  height: 150px;
+  background-color: #00101b;
+  margin-top: 3em;
+  color: #fff;
+  text-align: center;
+  padding-top: 30px;
+}
+
+footer p {
+  margin: 0 auto;
+}
+
+#footer-rights {
+  margin-top: 30px;
+}
+
+.main-container {
+  grid-template-columns: 1fr;
+  grid-template-areas: 
+    "gHeader"
+    "gNav"
+    "gMain"
+    "gAside"
+    "gAds"
+    "gFooter";
+}
+
+@media only screen and (min-width: 576px) {
+  .main-container {
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: 
+      "gHeader gHeader"
+      "gNav gNav"
+      "gAside gMain"
+      "gFooter gFooter";
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .ads {
+    display: block;
+    width: 60%;
+    margin: 0 20%;
+  }
+  li {
+    display: inline-block;
+  }
+  nav {    
+    position: sticky;
+    top: 0;
+  }
+  nav li:hover::after {
+    width: 70%;
+  }
+  .main-container {
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: 
+    "gHeader gHeader"
+    "gNav gNav"
+    "gAside gMain"
+    "gAds gAds"
+    "gFooter gFooter";
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .recipe img {
+    width: 60%;
+    margin: 0 20%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .ads {
+    width: 100%;
+    margin: 0;
+  }
+
+  .recipe img {
+    width: 85%;
+    margin: 8% 5% 0 0;
+  }
+
+  .main-container {
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-areas: 
+      "gHeader gHeader gHeader"
+      "gNav gNav gNav"
+      "gAside gMain gAds"
+      "gFooter gFooter gFooter";
+  }
+  
+  .recipe {
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: 
+    "gLeftSide gRightSide"
+    "gInstr gInstr";
+  }
+}
